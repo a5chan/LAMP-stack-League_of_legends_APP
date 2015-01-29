@@ -1,3 +1,5 @@
+<meta http-equiv="Content-Type" content="text/html; 
+charset=UTF-8" />
 <?php
 include_once("engine/database_functions.php");
 
@@ -9,11 +11,16 @@ $name =  $_POST['user_name'];
  * and open the template in the editor.
  */
 $userlist = getusernamelist();
-
-if(in_array($name, $userlist)){
-   echo '<p style = "color:red">This name already exists in the database</p>';
+echo $userlist[1];
+if(strlen($name) > 5)
+{
+    if(in_array($name, $userlist)){
+       echo '<p style = "color:red">This name already exists in the database</p>'.'<input type = "hidden" id = "usernamecheck" value = ""></input>';
+    }else{
+        echo '<p style = "color:green">This name is OK!</p>'.'<input type = "hidden" id = "usernamecheck" value = "Fine"></input>';
+    }
 }else{
-    echo '<p style = "color:green">This name is OK!</p>';
+   echo '<p style = "color:red">Must more more than 5 characters</p>'.'<input type = "hidden" id = "usernamecheck" value = ""></input>';
 }
 
 ?>

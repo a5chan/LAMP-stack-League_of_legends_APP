@@ -1,9 +1,14 @@
+<meta http-equiv="Content-Type" content="text/html; 
+charset=UTF-8" />
+
 <?php
 include_once("databaseconnect.php");
 
 $databaseconn = openDB();
 
 function getsinglevaluearray($field = null, $query = null){
+   mysqli_query ($GLOBALS['databaseconn'],"set character_set_results='utf8'"); 
+    
 //execute the SQL query and return records
 $result = mysqli_query($GLOBALS['databaseconn'],$query);
 $array = array();

@@ -10,22 +10,29 @@
     <br></br>
     
       <label style= "font-weight:bold;" for="repassword">Retype Password</label>
-    <input type="password" class="form-control" id="repassword" name = "repassword" required placeholder="Retype password here">
+    <input type="password" class="form-control" id="repassword" name = "repassword" required placeholder="Retype password here" required>
     <br></br>
    
      <div id = "emailgroup" class="form-group hidden">
     <label style= "font-weight:bold;" for="email">Email</label>
-    <input type="email" class="form-control" id="email" name = "email" placeholder="Enter email here">
+    <input type="email" class="form-control" id="email" name = "email" placeholder="Enter email here" required>
     <br></br>
      </div>
 
     
     <div id = "summonerboxes" class="form-group hidden">
     <label style= "font-weight:bold;" for="summonername">Summoner Name</label>
-    <input type="summonername" class="form-control" id="summonername" name = "summonername" placeholder="Enter summoner name here">
+    <input type="summonername" class="form-control" id="summonername" name = "summonername" placeholder="Enter summoner name here" required>
     <div id = "errorsummoner"></div>
     <br></br>
      </div>
+    
+     <select id = "regions" name = "regions" class="form-control">
+            <option value= "NA">North America</option> 
+            <option value= "EU">Europe</option>
+            <option value= "CH">Asia</option>
+              
+     </select>
  
     
     
@@ -46,6 +53,14 @@ var doneTypingInterval = 500;  //time in ms, 5 second for example
 
      $(document).ready(function() {
          
+     $('#username').bind('keypress', function (event) {
+    var regex = new RegExp("^[a-zA-Z0-9]+$");
+    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+    if (!regex.test(key)) {
+       event.preventDefault();
+       return false;
+    }
+    });
          
             // bind 'myForm' and provide a simple callback function 
         $('#checkbox').click(function(){
@@ -75,8 +90,7 @@ $('#summonername').keydown(function(){
         }); 
         
 function check(){
-
-
+      
 if($('#username').val() === ''){
   $('#erroruser').html('');
 }else{
@@ -85,7 +99,7 @@ if($('#username').val() === ''){
   $('#erroruser').html(data);
 });
 }
-
+    
 }
 
 
@@ -107,10 +121,12 @@ function doneTyping () {
 
 function validateForm() {
     
-    if(($('#password').val() === $('#repassword')))  {
-        return false;
-     } else { 
+    if($('#password').val() === $('#repassword').val()&& $('#summonername').val() !== '' && $('#username').val() !== '' && $('#summonernamecheck').val() !== '' && $('#usernamecheck').val() !== '')  
+    {
         return true;
+     } else { 
+   
+        return false;
      }    
 }
 
