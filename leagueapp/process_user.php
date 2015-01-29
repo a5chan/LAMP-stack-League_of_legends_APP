@@ -6,14 +6,22 @@ include_once("engine/database_functions.php");
  * and open the template in the editor.
  */
 
-$user_name = $_GET['username'];
+
 $password = $_GET['password'];
 $email = $_GET['email'];
 $summoner_name = $_GET['summonername'];
 $region = $_GET['regions'];
+$idlist = getuseridlist();
+$id = 0;
+do {
+    $id = mt_rand(100000, 999999);
+} while (in_array($id, $idlist));
+
+        
+inputuser($password, $email, $summoner_name, $region, $id);
+
+echo "<h1>Thanks for registering!</h1>";
 
 
-
-  
-
+header('Refresh: 2;url=index.php');
 ?>

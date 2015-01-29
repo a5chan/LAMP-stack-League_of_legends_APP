@@ -1,23 +1,22 @@
-<form id ="userform" action="process_user.php" onsubmit="return validateForm();">
+<form id ="userform" action="process_user.php" onsubmit="return validateForm();" accept-charset="utf-8">
   <div class="form-group">
-    <label style= "font-weight:bold;" for="username">User Name</label>
-    <input type="username" onkeyup = "check()" class="form-control" id="username" name = "username" required placeholder="Enter user name here">
-    <div id = "erroruser"></div>
-    <br></br>
     
-        <label style= "font-weight:bold;" for="password">Password</label>
+ 
+   
+     <div id = "emailgroup" class="form-group hidden">
+    <label style= "font-weight:bold;" for="email">Email</label>
+    <input type="email" onkeyup = "check()" onblur="check()" class="form-control" id="email" name = "email" placeholder="Enter email here" required>
+    <br></br>
+     </div>
+      <div id = "erroremail"></div>
+      
+          <label style= "font-weight:bold;" for="password">Password</label>
     <input type="password" class="form-control" id="password" name = "password" required placeholder="Enter password here">
     <br></br>
     
       <label style= "font-weight:bold;" for="repassword">Retype Password</label>
     <input type="password" class="form-control" id="repassword" name = "repassword" required placeholder="Retype password here" required>
     <br></br>
-   
-     <div id = "emailgroup" class="form-group hidden">
-    <label style= "font-weight:bold;" for="email">Email</label>
-    <input type="email" class="form-control" id="email" name = "email" placeholder="Enter email here" required>
-    <br></br>
-     </div>
 
     
     <div id = "summonerboxes" class="form-group hidden">
@@ -53,7 +52,7 @@ var doneTypingInterval = 500;  //time in ms, 5 second for example
 
      $(document).ready(function() {
          
-     $('#username').bind('keypress', function (event) {
+     $('#sumonername').bind('keypress', function (event) {
     var regex = new RegExp("^[a-zA-Z0-9]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     if (!regex.test(key)) {
@@ -91,12 +90,12 @@ $('#summonername').keydown(function(){
         
 function check(){
       
-if($('#username').val() === ''){
-  $('#erroruser').html('');
+if($('#email').val() === ''){
+  $('#erroremail').html('');
 }else{
   
-  $.post( "check.php", { user_name: $('#username').val() }, function(data) {
-  $('#erroruser').html(data);
+  $.post( "check.php", { email: $('#email').val() }, function(data) {
+  $('#erroremail').html(data);
 });
 }
     
@@ -121,7 +120,7 @@ function doneTyping () {
 
 function validateForm() {
     
-    if($('#password').val() === $('#repassword').val()&& $('#summonername').val() !== '' && $('#username').val() !== '' && $('#summonernamecheck').val() !== '' && $('#usernamecheck').val() !== '')  
+    if($('#password').val() === $('#repassword').val() && $('#summonernamecheck').val() !== '' && $('#emailcheck').val() !== '')  
     {
         return true;
      } else { 
