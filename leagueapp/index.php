@@ -15,15 +15,20 @@ and open the template in the editor.
       <a href="users.php" class="myButton">No Account Yet? Come Sign Up!</a>
       Sign in here!
       
-      <form action="login.php" accept-charset="utf-8"> 
+      <form action="login.php" method = "POST" accept-charset="utf-8"> 
      <input type="email" class="form-control" id="email" name = "email" required placeholder="Enter email here">
      </input>
      <input type="password" class="form-control" id="password" name = "password" required placeholder="Enter password here">
      </input>
-     
+     <div id = "error"></div>
        <button type="submit" class="btn btn-default">Submit</button>
+       
       </form>
-     
+     <?php
+     if(isset($_GET['p'])){
+     echo 'Invalid password or email';      
+     } 
+     ?>
     </body>
     
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

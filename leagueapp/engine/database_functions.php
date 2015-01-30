@@ -12,9 +12,15 @@ function getemaillist(){
 }
 
 function gethashpassword($email = null, $password = null){
-    
     $data = getnumberrows("select * from users where pass = '".$password."' and email = '".$email."'");
     return $data;
+}
+
+function getuserinformation($email = null){
+    $data = getdataset("select user_id, email, summoner_name from users where email = '".$email."'");
+    
+    return $data;
+    
 }
 
 

@@ -24,13 +24,13 @@ while($row = mysqli_fetch_array($result))
     return $array;
 }
 
-function getsinglevalue($query = null, $field = null){
-$value = mysqli_query($GLOBALS['databaseconn'],$query);    
-while ($row = $value->fetch_assoc()) {
-     
+function getsinglevalue($query = null, $field = null)
+{
+    $value = mysqli_query($GLOBALS['databaseconn'],$query);    
+    while ($row = $value->fetch_assoc()) 
+    {
     }
-
-return $row[$field];
+    return $row[$field];
 }
 
 function getnumberrows($query = null){
@@ -39,6 +39,14 @@ function getnumberrows($query = null){
     return $count;
 }
 
+function getdataset($query = null){
+    $result = mysqli_query($GLOBALS['databaseconn'],$query);
+   
+    while($row = $result->fetch_assoc()) {
+     return $row;
+    }
+   
+}
 
 
 

@@ -3,6 +3,7 @@
     
  
    
+      
      <div id = "emailgroup" class="form-group hidden">
     <label style= "font-weight:bold;" for="email">Email</label>
     <input type="email" onkeyup = "check()" onblur="check()" class="form-control" id="email" name = "email" placeholder="Enter email here" required>
@@ -21,7 +22,7 @@
     
     <div id = "summonerboxes" class="form-group hidden">
     <label style= "font-weight:bold;" for="summonername">Summoner Name</label>
-    <input type="summonername" class="form-control" id="summonername" name = "summonername" placeholder="Enter summoner name here" required>
+    <input type="summonername" onblur = "checksummoner();" class="form-control" id="summonername" name = "summonername" placeholder="Enter summoner name here" required>
     <div id = "errorsummoner"></div>
     <br></br>
      </div>
