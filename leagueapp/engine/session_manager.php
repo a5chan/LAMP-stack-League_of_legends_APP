@@ -7,14 +7,11 @@
  */
 session_start();
  
-$stillLoggedIn = timeCheck();
-echo $stillLoggedIn;
- 
 function timeCheck()
 {
     if(!isset($_SESSION['isLoggedIn']) || !($_SESSION['isLoggedIn']))
     {
-        echo 'asdds';
+      
         $_SESSION['isLoggedIn'] = true;
 	/////////////////////////////////////////
 	$_SESSION['timeOut'] = 5;
@@ -23,7 +20,7 @@ function timeCheck()
     }
 	else
 	{
-            echo 'whdffd';
+          
 		// user is logged in
 		
 		$hasSessionExpired = checkIfTimedOut();

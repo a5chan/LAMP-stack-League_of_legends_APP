@@ -22,6 +22,7 @@ inputuser($password, $email, $summoner_name, $region, $id);
 
 echo "<h1>Thanks for registering!</h1>";
 
+mail($email, 'Validation link for League of Legends application', 'Thanks for registering! Click on this link to activate your account http://localhost/leagueapp/activate.php?id='.$id);
 
 header('Refresh: 2;url=index.php');
 ?>

@@ -11,8 +11,7 @@ mysqli_query($GLOBALS['databaseconn'],"SET NAMES 'utf8'");
 mysqli_query($GLOBALS['databaseconn'],"SET CHARCTER SET utf8"); 
 
 function getsinglevaluearray($field = null, $query = null){
-   
-    
+     
 //execute the SQL query and return records
 $result = mysqli_query($GLOBALS['databaseconn'],$query);
 $array = array();
@@ -23,6 +22,13 @@ while($row = mysqli_fetch_array($result))
 }
     return $array;
 }
+
+function query($query = null){
+mysqli_query($GLOBALS['databaseconn'], 'SET NAMES UTF8'); 
+$result = mysqli_query($GLOBALS['databaseconn'],$query);
+}
+
+
 
 function getsinglevalue($query = null, $field = null)
 {
@@ -46,16 +52,6 @@ function getdataset($query = null){
      return $row;
     }
    
-}
-
-
-
-function insertdata($query = null){
-   mysqli_query($GLOBALS['databaseconn'], 'SET NAMES UTF8'); 
-
-    mysqli_query($GLOBALS['databaseconn'],$query)
-            or die ('failed'); 
-
 }
 
 /* 

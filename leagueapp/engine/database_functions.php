@@ -5,14 +5,16 @@ charset=UTF-8" />
 include_once ("database_basefunctions.php");
 
 
-
+function validate_account($id = null){
+    $data = query("update users set verified = 'Yes' where user_id = ".$id);    
+}
 function getemaillist(){
     $data = getsinglevaluearray('email', "select email from users" );
     return $data;
 }
 
 function gethashpassword($email = null, $password = null){
-    $data = getnumberrows("select * from users where pass = '".$password."' and email = '".$email."'");
+    $data = getnumberrows("select * from users where pass = '".$password."' and email = '".$email."' and verified = 'Yes'");
     return $data;
 }
 
@@ -26,7 +28,7 @@ function getuserinformation($email = null){
 
 function inputuser($password = null, $email = null, $summoner_name = null, $region = null, $user_id = null){
 $password = hash("sha256", $password);
-insertdata("insert into users (pass, email, summoner_name, region, user_id) VALUES ('".$password."', '".$email."', '".$summoner_name."', '".$region."', ".$user_id.")");
+query("insert into users (pass, email, summoner_name, region, user_id) VALUES ('".$password."', '".$email."', '".$summoner_name."', '".$region."', ".$user_id.")");
 }
 
 function getuseridlist(){
