@@ -6,10 +6,11 @@
  * and open the template in the editor.
  */
 include_once("engine/session_functions.php");
-include_once ("engine/session_manager.php");
+
 
 $user_id = get_session_id();
 $summoner_name = get_session_name();
+
 ?>
 
 <p>Welcome to your own portal! <?=$summoner_name?> </p>

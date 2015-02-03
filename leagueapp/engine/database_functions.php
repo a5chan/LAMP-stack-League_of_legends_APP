@@ -5,7 +5,7 @@ include_once ("database_basefunctions.php");
 
 
 function look_up_user_names($user = null){
-    $data = getmultiepldataset("select email, summoner_name, user_id from users where email LIKE '%".$user."' ORDER BY email ASC LIMIT 3", array('email', 'summoner_name', 'user_id'));
+    $data = getmultiepldataset("select email, summoner_name, user_id from users where email LIKE '%".$user."%' ORDER BY email ASC LIMIT 3", array('email', 'summoner_name', 'user_id'));
     return $data;
 }
 
@@ -28,6 +28,10 @@ function getuserinformation($email = null){
     
     return $data;
     
+}
+
+function insert_message($from = null, $id = null, $html = null){
+    query("insert into messages (from_id, to_id, message) VALUES (".$from.", ".$id.", '".$html."')");
 }
 
 

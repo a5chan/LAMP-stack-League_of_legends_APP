@@ -23,6 +23,7 @@ while($row = mysqli_fetch_array($result))
 }
 
 function query($query = null){
+    echo $query;
 mysqli_query($GLOBALS['databaseconn'], 'SET NAMES UTF8'); 
 $result = mysqli_query($GLOBALS['databaseconn'],$query);
 }
@@ -48,7 +49,7 @@ function getdataset($query = null){
     $result = mysqli_query($GLOBALS['databaseconn'],$query);
    
     while($row = $result->fetch_assoc()) {
-     echo $row['user_id'];
+        return $row;
     }
    
 }

@@ -2,6 +2,7 @@
 include_once("session_manager.php");
 
 function get_session_id(){
+
     return $_SESSION['user_id'];
 }
 

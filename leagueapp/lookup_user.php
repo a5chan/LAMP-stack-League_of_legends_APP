@@ -5,13 +5,6 @@ include_once("engine/database_functions.php");
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
-class User {
-    public $email= "";
-    public $summoner_name  = "";
-    public $user_id = "";
-}
  
 
 
