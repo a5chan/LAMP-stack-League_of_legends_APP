@@ -1,3 +1,6 @@
+<!--...<meta http-equiv="Content-Type" content="text/html; 
+charset=UTF-8" /> -->
+
 <form id ="userform" action="process_user.php" onsubmit="return validateForm();" accept-charset="utf-8">
   <div class="form-group">
     

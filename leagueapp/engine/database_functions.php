@@ -1,8 +1,13 @@
 
-<meta http-equiv="Content-Type" content="text/html; 
-charset=UTF-8" />
 <?php
 include_once ("database_basefunctions.php");
+
+
+
+function look_up_user_names($user = null){
+    $data = getmultiepldataset("select email, summoner_name, user_id from users where email LIKE '%".$user."' ORDER BY email ASC LIMIT 3", array('email', 'summoner_name', 'user_id'));
+    return $data;
+}
 
 
 function validate_account($id = null){

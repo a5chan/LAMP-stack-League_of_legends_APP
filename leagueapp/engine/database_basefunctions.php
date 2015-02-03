@@ -1,5 +1,4 @@
-<meta http-equiv="Content-Type" content="text/html; 
-charset=UTF-8" />
+
 
 <?php
 header('Content-Type: text/html; charset=utf-8');
@@ -49,9 +48,42 @@ function getdataset($query = null){
     $result = mysqli_query($GLOBALS['databaseconn'],$query);
    
     while($row = $result->fetch_assoc()) {
-     return $row;
+     echo $row['user_id'];
     }
    
+}
+
+
+function getmultiepldataset($query = null, $fields = null){
+
+$text = "";
+
+$counter = 1;
+  $result = mysqli_query($GLOBALS['databaseconn'],$query);
+  $rows = mysqli_num_rows($result);
+if(mysqli_num_rows($result)){
+    $text = '{"testData":[';
+
+    $first = true;
+
+    $first = true;
+    while($row=mysqli_fetch_row($result)){
+        //  cast results to specific data types
+
+        if($first) {
+            $first = false;
+        } else {
+            $text .= ',';
+        }
+        $text .= json_encode($row);
+    }
+    $text .= ']}';
+} else {
+    echo '[]';
+}
+
+
+        return $text;
 }
 
 /* 
